@@ -29,3 +29,49 @@ CREATE TABLE pedidos (
     FOREIGN KEY (codigo) REFERENCES equipamentos(codigo)    
     )
 
+## exercicio 2
+## criando tabelas
+
+CREATE TABLE alunos(
+    nome VARCHAR (50) NOT NULL,
+    endereco VARCHAR (50) NOT NULL,
+    telefone VARCHAR (11) NOT NULL,
+    matricula VARCHAR (20) NOT NULL, 
+    PRIMARY KEY (matricula)
+    )
+
+
+CREATE TABLE funcionarios (
+    nome VARCHAR (50) NOT NULL,
+    endereco VARCHAR (50) NOT NULL,
+    telefone VARCHAR (11) NOT NULL,
+    siape VARCHAR (20) NOT NULL, 
+    tipo VARCHAR (20) NOT NULL, 
+    PRIMARY KEY (siape)
+    )
+
+CREATE TABLE livros (
+    titulo VARCHAR (50) NOT NULL, 
+    autor VARCHAR (50) NOT NULL, 
+    editora VARCHAR (50) NOT NULL,
+    isbn VARCHAR (50) NOT NULL,
+    PRIMARY KEY (isbn)
+    )
+    
+## criando tabela fato
+CREATE TABLE emprestimo (
+    data_emprestimo DATE NOT NULL, 
+    data_devolução DATE NOT NULL,
+    numero INTEGER NOT NULL, 
+    id_emprestimo INTEGER AUTO_INCREMENT, # criar ID com numeros aleatórios 
+    matricula VARCHAR (20) NOT NULL, 
+    siape VARCHAR (20) NOT NULL, 
+    isbn VARCHAR (50) NOT NULL,
+    PRIMARY KEY (id_emprestimo),
+    FOREIGN KEY (matricula) REFERENCES alunos(matricula),
+    FOREIGN KEY (siape) REFERENCES funcionarios(siape),
+    FOREIGN KEY (isbn) REFERENCES livros(isbn)
+    )
+    
+
+
