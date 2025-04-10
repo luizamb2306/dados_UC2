@@ -1,0 +1,17 @@
+#criando tabelas
+
+CREATE TABLE pedidos (
+    numero INTEGER NOT NULL,
+    data DATE NOT NULL,
+    status VARCHAR (30) NOT NULL,
+    cpf VARCHAR(14) NOT NULL,
+    cnpj VARCHAR (17) NOT NULL,
+    codigo INTEGER NOT NULL,
+    PRIMARY KEY (numero,cpf, cnpj, codigo),
+    FOREIGN KEY (cpf) REFERENCES clientes(cpf),
+	FOREIGN KEY (cnpj) REFERENCES fornecedores(cnpj),
+    FOREIGN KEY (codigo) REFERENCES equipamentos(codigo)    
+    )
+
+
+
