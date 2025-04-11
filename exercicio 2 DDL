@@ -1,0 +1,20 @@
+#Cenário 2: Sistema de Gerenciamento de Projetos
+Entidades: Projeto, Tarefa, Usuário, Atribuição
+Atributos:
+Projeto: ID do Projeto, Nome, Descrição, Data de Início, Data de Fim
+Tarefa: ID da Tarefa, Nome, Descrição, Data de Início, Data de Fim, Status, ID do
+Projeto (chave estrangeira)
+Usuário: ID do Usuário, Nome, E-mail
+Atribuição: ID da Atribuição, ID do Usuário (chave estrangeira), ID da Tarefa (chave
+estrangeira), Data de Atribuição
+
+# criando tabela projeto
+CREATE TABLE projeto(
+    ID_projeto INTEGER NOT NULL, 
+    nome VARCHAR (20),
+    descricao VARCHAR (50),
+    data_inicio DATE NOT NULL,
+    data_fim DATE NOT NULL,
+    PRIMARY KEY (ID_projeto)
+    )
+
