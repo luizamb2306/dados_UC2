@@ -1,0 +1,22 @@
+
+## EXERCICIO:
+#Cenário 1: Loja Online
+Entidades: Cliente, Produto, Pedido, Item do Pedido
+Atributos:
+Cliente: ID do Cliente, Nome, E-mail, Endereço
+Produto: ID do Produto, Nome, Descrição, Preço, Estoque
+Pedido: ID do Pedido, Data do Pedido, Status, ID do Cliente (chave estrangeira)
+Item do Pedido: ID do Item do Pedido, Quantidade, Preço Unitário, ID do Pedido (chave
+estrangeira), ID do Produto (chave estrangeira)
+
+
+## criando tabela clientes
+
+CREATE TABLE clientes(
+    ID_cliente INTEGER AUTO_INCREMENT,
+    nome VARCHAR (50) NOT NULL, 
+    email VARCHAR (20) NOT NULL,
+    endereco VARCHAR (20) NOT NULL,
+    PRIMARY KEY ID_cliente
+    )
+
