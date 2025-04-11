@@ -13,7 +13,7 @@ estrangeira), ID do Produto (chave estrangeira)
 ## criando tabela clientes
 
 CREATE TABLE clientes(
-    ID_cliente INTEGER AUTO_INCREMENT,
+    ID_cliente INTEGER NOT NULL,
     nome VARCHAR (50) NOT NULL, 
     email VARCHAR (20) NOT NULL,
     endereco VARCHAR (20) NOT NULL,
@@ -21,10 +21,35 @@ CREATE TABLE clientes(
 )
 
 CREATE TABLE produto(
-    ID_produto INTEGER AUTO_INCREMENT,
+    ID_produto INTEGER NOT NULL,
     nome VARCHAR (50) NOT NULL, 
     descricao VARCHAR (20) NOT NULL,
     preco FLOAT NOT NULL,
     estoque INTEGER NOT NULL,
     PRIMARY KEY (ID_produto)
 )
+
+CREATE TABLE pedido(
+    ID_pedido INTEGER NOT NULL, 
+    data_pedido DATE NOT NULL, 
+    status VARCHAR (20) NOT NULL, 
+    ID_cliente INTEGER NOT NULL, 
+    PRIMARY KEY (ID_pedido),
+    FOREIGN KEY (ID_cliente) REFERENCES clientes(ID_cliente)
+    )
+
+CREATE TABLE item_pedido(
+    ID_item INTEGER NOT NULL, 
+    quantidade INTEGER NOT NULL, 
+    preco_unitario FLOAT NOT NULL, 
+    ID_pedido INTEGER NOT NULL,
+    ID_produto INTEGER NOT NULL,
+    PRIMARY KEY (ID_item),
+    FOREIGN KEY (ID_pedido) REFERENCES pedido(ID_pedido),
+    FOREIGN KEY (ID_produto) REFERENCES produto(ID_produto)
+    )
+
+
+
+
+    
