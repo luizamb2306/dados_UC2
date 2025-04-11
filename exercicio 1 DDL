@@ -17,6 +17,14 @@ CREATE TABLE clientes(
     nome VARCHAR (50) NOT NULL, 
     email VARCHAR (20) NOT NULL,
     endereco VARCHAR (20) NOT NULL,
-    PRIMARY KEY ID_cliente
-    )
+    PRIMARY KEY (ID_cliente)
+)
 
+CREATE TABLE produto(
+    ID_produto INTEGER AUTO_INCREMENT,
+    nome VARCHAR (50) NOT NULL, 
+    descricao VARCHAR (20) NOT NULL,
+    preco FLOAT NOT NULL,
+    estoque INTEGER NOT NULL,
+    PRIMARY KEY (ID_produto)
+)
