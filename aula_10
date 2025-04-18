@@ -1,0 +1,104 @@
+## INNER JOIN
+
+SELECT	
+	P.nome_completo,
+    T.nome_turma
+FROM professores P
+	INNER JOIN turmas T
+    ON P.id_professor = T.id_professor_responsavel
+
+SELECT
+	A.nome_completo,
+    M.data_matricula_turma
+FROM	
+	alunos A
+    INNER JOIN matriculas M
+    ON A.id_aluno = M.id_aluno
+
+
+SELECT
+	A.nome_completo,
+    M.data_matricula_turma,
+    T.nome_turma
+FROM	
+	alunos A
+    INNER JOIN matriculas M
+    ON A.id_aluno = M.id_aluno
+	INNER JOIN turmas T
+    ON M.id_turma = T.id_turma
+
+# nome dos profs e disciplinas que dão aula
+SELECT
+	P.nome_completo,
+    D.nome_disciplina
+FROM
+	professores P
+    INNER JOIN
+    professores_disciplinas P_D
+    ON P.id_professor = P_D.id_professor
+    INNER JOIN
+    disciplinas D
+    ON P_D.id_disciplina = D.id_disciplina
+    
+ORDER BY D.nome_disciplina ASC
+
+## Calcular a média dos alunos
+
+SELECT
+	A.nome_completo,
+    AV.tipo_avaliacao,
+    N.nota,
+    AV.peso,
+    N.nota * AV.peso AS representatividade_media 
+FROM
+	alunos A
+    # conectar tabela alunos com tabela de matriculas 
+    INNER JOIN matriculas M
+    ON A.id_aluno = M.id_aluno
+    # conectar tabela de matriculas com tabela de notas (assim, vai ter acesso a nota)
+    INNER JOIN notas N
+    ON M.id_matricula = n.id_matricula
+    #trazer dados de tipo de avaliação e peso ==> pra isso, conectar tabela de notas com tabela de avaliação
+    INNER JOIN avaliacoes AV
+    ON N.id_avaliacao = av.id_avaliacao
+
+
+## Calcular a média dos alunos
+
+SELECT
+	A.nome_completo,
+    AV.tipo_avaliacao,
+    N.nota,
+    AV.peso, 
+    SUM(N.nota * AV.peso) 
+FROM
+	alunos A
+    # conectar tabela alunos com tabela de matriculas 
+    INNER JOIN matriculas M
+    ON A.id_aluno = M.id_aluno
+    # conectar tabela de matriculas com tabela de notas (assim, vai ter acesso a nota)
+    INNER JOIN notas N
+    ON M.id_matricula = n.id_matricula
+    #trazer dados de tipo de avaliação e peso ==> pra isso, conectar tabela de notas com tabela de avaliação
+    INNER JOIN avaliacoes AV
+    ON N.id_avaliacao = av.id_avaliacao
+
+GROUP BY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
